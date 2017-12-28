@@ -11,6 +11,6 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     export CC=clang
     export CXX=clang++
     export EXTRA_CMAKE_FLAGS=-DCMAKE_PREFIX_PATH='/usr/local/opt/qt5/;/usr/local/opt/openal-soft'
-    conan install -s compiler=apple-clang -s compiler.version=7.3 .. --build missing
+    conan install -s compiler=apple-clang .. --build missing
     ../.travis/build.sh
 fi
