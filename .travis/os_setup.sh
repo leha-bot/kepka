@@ -16,6 +16,7 @@ brew_package() {
 
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     brew update
+    brew_package openssl
     brew_package cmake
     brew_package ninja
     brew_package qt
