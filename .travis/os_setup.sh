@@ -3,7 +3,7 @@
 set -x
 
 if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    docker pull berkus/docker-cpp-ci:latest
+    docker pull berkus/docker-cpp-ci:latest || exit 1
 fi
 
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
