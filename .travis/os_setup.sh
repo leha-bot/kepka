@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     docker pull berkus/docker-cpp-ci:latest
 fi
