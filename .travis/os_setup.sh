@@ -6,12 +6,19 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     docker pull berkus/docker-cpp-ci:latest || exit 1
 fi
 
+brew_package() {
+    if brew ls --versions $1 > /dev/null; then
+        brew outdated $1 > /dev/null || brew upgrade $1 || exit 1
+    else
+        brew install $1 || exit 1
+    fi
+}
+
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     brew update
-    brew install cmake qt ffmpeg opus openal-soft
-    brew outdated cmake && brew upgrade cmake
-    brew outdated qt && brew upgrade qt
-    brew outdated ffmpeg && brew upgrade ffmpeg
-    brew outdated opus && brew upgrade opus
-    brew outdated openal-soft && brew upgrade openal-soft
+    brew_package cmake
+    brew_package qt
+    brew_package ffmpeg
+    brew_package opus
+    brew_package openal-soft
 fi
